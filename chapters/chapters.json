@@ -1,0 +1,22 @@
+[
+  { "separator": "Part I · The Fabric and the Underlay" },
+  "01-dc-network-problem.md",
+  "02-spine-leaf-fabric.md",
+  "03-ip-underlay.md",
+  { "separator": "Part II · VXLAN Overlays" },
+  "04-why-overlays.md",
+  "05-vxlan-data-plane.md",
+  "06-flood-and-learn.md",
+  { "separator": "Part III · The EVPN Control Plane" },
+  "07-evpn-fundamentals.md",
+  "08-evpn-route-types.md",
+  "09-evpn-vxlan-in-action.md",
+  "10-overlay-routing.md",
+  "11-multihoming.md",
+  { "separator": "Part IV · Design and Operations" },
+  "12-designing-a-fabric.md",
+  "13-operating-and-troubleshooting.md",
+  { "separator": "Appendix" },
+  "14-reference-tables.md",
+  "glossary.md"
+]
