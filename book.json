@@ -7,5 +7,7 @@
   "description": "A concise, diagram-rich guide to spine-leaf fabrics, VXLAN, and EVPN for network engineering students.",
   "homeUrl": "https://khaledmahmudkm.github.io/stacks/",
   "logo": "logo.svg",
-  "math": false
+  "math": false,
+  "palette": "lagoon",
+  "_comment": "palette options are: moss, harbor, lagoon, sepia, clay"
 }
