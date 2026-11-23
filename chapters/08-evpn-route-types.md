@@ -135,3 +135,63 @@ It helps to see the division of labor in one picture. Known unicast rides type 2
 </figure>
 
 The next chapter puts types 2 and 3 to work together, walking a real packet exchange through an EVPN-VXLAN fabric and showing ARP suppression in action.
+
+## Check your understanding
+
+Choose the best answer for each question, then check your answers in [Answers to Chapter Questions](answers.md#chapter-8-evpn-route-types).
+
+**1. Which EVPN route type advertises an individual host's MAC, optionally with its IP?**
+
+- A. Type 1
+- B. Type 2
+- C. Type 3
+- D. Type 5
+
+**2. Which route type lets a VTEP announce that it has members in a VNI, for BUM delivery?**
+
+- A. Type 2
+- B. Type 3
+- C. Type 4
+- D. Type 5
+
+**3. Which route type advertises whole IP prefixes for routing between subnets?**
+
+- A. Type 1
+- B. Type 3
+- C. Type 4
+- D. Type 5
+
+**4. Which two route types exist to make dual-homed (multihomed) hosts work?**
+
+- A. Types 1 and 4
+- B. Types 2 and 3
+- C. Types 3 and 5
+- D. Types 2 and 5
+
+**5. Which field of a type 2 route makes ARP suppression possible?**
+
+- A. The route distinguisher
+- B. The IP address paired with the MAC
+- C. The ESI
+- D. The L3VNI label
+
+**6. In a type 2 route, what is Label 1?**
+
+- A. The L3VNI, for routing
+- B. The L2VNI, the bridging segment the host is in
+- C. The ESI
+- D. The UDP port
+
+**7. What does a type 3 route set replace from plain flood-and-learn?**
+
+- A. The VXLAN header
+- B. ECMP
+- C. The underlay routing
+- D. Manual or multicast-based BUM configuration: the flood list is built from BGP
+
+**8. Which traffic rides on type 2 routes?**
+
+- A. BUM traffic
+- B. Known unicast
+- C. Routing to external networks
+- D. Designated forwarder election

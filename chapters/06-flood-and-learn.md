@@ -125,3 +125,63 @@ Step back and the gap is obvious. A plain switch floods and learns because it ha
 The natural question is: what if the VTEPs used BGP to **tell each other** which MAC addresses and which hosts they have, instead of making everyone learn it the hard way by flooding? Then a VTEP would know where every host is before the first packet, ARP could be answered locally instead of flooded, and host moves could be announced instantly rather than discovered after a timeout.
 
 That is exactly what **EVPN** does. It is a BGP-based control plane for the VXLAN data plane we built in Chapter 5. Part III is devoted to it, starting with its fundamentals in the next chapter.
+
+## Check your understanding
+
+Choose the best answer for each question, then check your answers in [Answers to Chapter Questions](answers.md#chapter-6-flood-and-learn-vxlan).
+
+**1. What does BUM stand for?**
+
+- A. Bridged, Unicast and Multicast
+- B. Broadcast, Unicast and MAC
+- C. Border, Underlay and Multicast
+- D. Broadcast, Unknown-unicast and Multicast
+
+**2. An ARP request asking 'who has 10.1.1.5?' is which kind of BUM traffic?**
+
+- A. Unknown unicast
+- B. Broadcast
+- C. Multicast
+- D. It is not BUM traffic
+
+**3. In head-end (ingress) replication, who makes the copies of a BUM frame?**
+
+- A. The spines
+- B. A multicast rendezvous point
+- C. The receiving server
+- D. The source VTEP, one unicast copy per remote VTEP in the VNI
+
+**4. What is the main drawback of using underlay multicast for BUM delivery?**
+
+- A. It sends more copies from the source
+- B. It requires running multicast routing (PIM) across the underlay
+- C. It cannot reach more than two VTEPs
+- D. It disables ECMP
+
+**5. In data-plane learning, which two fields does a VTEP record when it decapsulates a frame?**
+
+- A. Inner destination MAC and outer destination IP
+- B. VNI and UDP source port
+- C. Inner source MAC and outer source IP
+- D. Inner source IP and spine address
+
+**6. What is the root cause of flood-and-learn's scaling problems?**
+
+- A. VXLAN headers are too small
+- B. Leaves have too few ports
+- C. The underlay uses BGP
+- D. There is no control plane: all knowledge comes from watching traffic
+
+**7. Why is ARP a particular burden in a large flood-and-learn VNI?**
+
+- A. ARP cannot cross VXLAN tunnels
+- B. Every host broadcasts ARP periodically, and each broadcast is flooded to every VTEP in the segment
+- C. ARP replies are encrypted
+- D. ARP disables data-plane learning
+
+**8. What fix does the chapter propose?**
+
+- A. Bigger MAC tables
+- B. Turn off ARP
+- C. Let VTEPs use BGP to tell each other which hosts they have
+- D. Return to stretched VLANs

@@ -122,3 +122,63 @@ Spine-leaf also changed the hardware. Instead of a few giant modular chassis, a 
 ## What the fabric still needs
 
 We now have a topology where every leaf can reach every other leaf over many equal paths. But a topology is just cabling. For packets to actually flow, the switches must agree on how to reach each other, which means they need a routing protocol running across these links. That routing layer is called the **underlay**, and it is the subject of the next chapter.
+
+## Check your understanding
+
+Choose the best answer for each question, then check your answers in [Answers to Chapter Questions](answers.md#chapter-2-the-spine-leaf-clos-fabric).
+
+**1. What is the defining wiring rule of a spine-leaf fabric?**
+
+- A. Every leaf connects to every other leaf
+- B. Each leaf connects to exactly one spine
+- C. Spines connect to servers, leaves connect to the core
+- D. Every leaf connects to every spine, and no leaf-to-leaf or spine-to-spine links exist
+
+**2. In a fabric with three spines, how many equal-cost paths join any two leaves?**
+
+- A. One
+- B. Two
+- C. Three
+- D. Six
+
+**3. What does ECMP do in a spine-leaf fabric?**
+
+- A. Chooses the single shortest path
+- B. Blocks redundant paths to prevent loops
+- C. Encrypts traffic between leaves
+- D. Spreads traffic across all equal-cost paths at once
+
+**4. How many switches does traffic between two servers on different leaves cross?**
+
+- A. Three: a leaf, a spine and another leaf
+- B. One: the spine
+- C. Two: a leaf and a spine
+- D. It depends on how busy the core is
+
+**5. The fabric needs more bandwidth between leaves. What do you add?**
+
+- A. A leaf
+- B. A bigger core chassis
+- C. A spine
+- D. More VLANs
+
+**6. What limits the number of spines a fabric can have?**
+
+- A. The number of uplink ports on each leaf
+- B. The number of servers
+- C. The number of VLANs
+- D. The spanning tree diameter
+
+**7. What is a super-spine (5-stage) fabric used for?**
+
+- A. Replacing the leaves with larger switches
+- B. Connecting several spine-leaf pods with another CLOS stage
+- C. Running spanning tree between spines
+- D. Connecting servers directly to spines
+
+**8. Why does building a fabric from identical fixed-form switches help automation?**
+
+- A. Fixed switches need no configuration
+- B. Fixed switches cannot be configured by hand
+- C. One configuration template covers every switch of a given role
+- D. They run spanning tree automatically

@@ -147,3 +147,63 @@ Pulling these problems together, a modern data center network needs four things:
 - **Scale-out growth**, meaning you add capacity by adding more of the same small switches rather than replacing the core with a bigger one.
 
 The next chapter introduces the topology that delivers all four. It is an old idea from the telephone network, brought back for Ethernet: the CLOS fabric, which we build as spine and leaf.
+
+## Check your understanding
+
+Choose the best answer for each question, then check your answers in [Answers to Chapter Questions](answers.md#chapter-1-the-data-center-network-problem).
+
+**1. In the classic three-tier design, which layer did servers plug into?**
+
+- A. The core layer
+- B. The aggregation layer
+- C. The access layer
+- D. The spine layer
+
+**2. Which kind of traffic was the three-tier design built for?**
+
+- A. East-west traffic between servers
+- B. Storage replication traffic
+- C. North-south traffic between servers and outside clients
+- D. Virtual machine migration traffic
+
+**3. Why did growing east-west traffic make the core a bottleneck?**
+
+- A. Core switches could not run spanning tree
+- B. East-west flows between blocks had to climb to the core and come back down
+- C. East-west traffic needed a separate VLAN per server
+- D. The core only forwarded north-south traffic
+
+**4. An access switch has 48 server ports at 10 Gbps and two 40 Gbps uplinks. What is its oversubscription?**
+
+- A. 1:1
+- B. 2.4:1
+- C. 4:1
+- D. 6:1
+
+**5. What does the Spanning Tree Protocol do with redundant parallel links?**
+
+- A. Load-balances traffic across them
+- B. Blocks all but one so the topology has no loops
+- C. Bundles them into one logical link
+- D. Turns them into routed links
+
+**6. What does 'scale-out growth' mean for a data center network?**
+
+- A. Replacing the core with a bigger chassis
+- B. Moving servers to another data center
+- C. Raising the oversubscription ratio
+- D. Adding capacity by adding more of the same small switches
+
+**7. Which of these is NOT one of the four requirements the chapter lists for a modern data center network?**
+
+- A. A single large core switch for all traffic
+- B. High, predictable bandwidth between any two servers
+- C. Low oversubscription
+- D. All links forwarding at once
+
+**8. Why is high oversubscription a problem for modern applications?**
+
+- A. It disables spanning tree
+- B. It limits the number of VLANs
+- C. Internal east-west flows fight for scarce uplinks, causing congestion and unpredictable latency
+- D. It prevents servers from reaching the internet

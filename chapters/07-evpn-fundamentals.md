@@ -171,3 +171,63 @@ With this machinery in place, the Chapter 6 complaints dissolve:
 - **Scales on proven technology.** It is all just BGP, the same protocol the internet runs on, with route reflectors to keep sessions manageable.
 
 To actually carry all this information, EVPN defines several **route types**, each a different kind of advertisement for a different purpose. Learning those five route types is the subject of the next chapter.
+
+## Check your understanding
+
+Choose the best answer for each question, then check your answers in [Answers to Chapter Questions](answers.md#chapter-7-evpn-fundamentals).
+
+**1. What is EVPN in an EVPN-VXLAN fabric?**
+
+- A. A replacement for the VXLAN data plane
+- B. A BGP-based control plane that distributes host and segment information
+- C. A new encapsulation format
+- D. A spanning tree variant
+
+**2. Which RFC describes running EVPN over a VXLAN data plane?**
+
+- A. RFC 7348
+- B. RFC 7432
+- C. RFC 7938
+- D. RFC 8365
+
+**3. With EVPN, how does a VTEP learn about its local hosts?**
+
+- A. From BGP updates
+- B. From the spines' MAC tables
+- C. It does not need to learn them
+- D. The ordinary way, from the data plane or ARP, then advertises them
+
+**4. Why do VTEPs peer with route reflectors instead of with each other?**
+
+- A. Route reflectors encrypt EVPN routes
+- B. It keeps the number of BGP sessions linear in the number of VTEPs instead of quadratic
+- C. VTEPs cannot run eBGP
+- D. Route reflectors forward the data traffic
+
+**5. Which address family carries EVPN routes in BGP?**
+
+- A. AFI 1, SAFI 1
+- B. AFI 2, SAFI 1
+- C. AFI 25 (L2VPN), SAFI 70 (EVPN)
+- D. AFI 25, SAFI 65
+
+**6. What is the job of a Route Distinguisher (RD)?**
+
+- A. To decide which VTEPs import a route
+- B. To make each advertised address globally unique, even when tenants overlap
+- C. To identify the VXLAN port
+- D. To elect a designated forwarder
+
+**7. What is the job of a Route Target (RT)?**
+
+- A. To make routes unique
+- B. To control which routes a VTEP exports and imports
+- C. To carry the MAC address
+- D. To set the BGP next hop
+
+**8. Which of these does EVPN make possible that flood-and-learn could not do?**
+
+- A. ECMP across spines
+- B. Larger VNIs
+- C. ARP suppression, answering ARP locally from learned IP-to-MAC bindings
+- D. Routed underlay links

@@ -130,3 +130,63 @@ Beyond fault-finding, a few practices keep a fabric healthy over time.
 That is the whole arc of the book. A routed spine-leaf fabric gives predictable, scale-out bandwidth. VXLAN tunnels tenant Layer 2 across it. EVPN provides a BGP control plane so the tunnels are driven by knowledge instead of flooding. Anycast gateways and type 5 routes add routing at the edge, and types 1 and 4 make multihoming safe. Operating it all comes back to one disciplined idea: understand the layers, and check them from the bottom up.
 
 The Appendix gathers the reference tables you will reach for most, and the Glossary defines every term in one place.
+
+## Check your understanding
+
+Choose the best answer for each question, then check your answers in [Answers to Chapter Questions](answers.md#chapter-13-operating-and-troubleshooting).
+
+**1. What is the chapter's single most useful troubleshooting idea?**
+
+- A. Work from the bottom up: confirm the underlay before suspecting the overlay
+- B. Start with the EVPN routes
+- C. Reboot the spines first
+- D. Check the servers before the fabric
+
+**2. Ping works but real traffic fails across the fabric. What is the most likely cause?**
+
+- A. An RT mismatch
+- B. A missing type 3 route
+- C. MTU: VXLAN adds about 50 bytes, so full-size frames are dropped after encapsulation
+- D. A broken DF election
+
+**3. Why check the l2vpn evpn BGP sessions separately from IPv4 unicast?**
+
+- A. They use different TCP ports
+- B. A session can be up for IPv4 unicast but never activated for l2vpn evpn
+- C. EVPN sessions run over UDP
+- D. IPv4 sessions are only on spines
+
+**4. One VNI works and another does not. Where should you look first?**
+
+- A. The MTU
+- B. The underlay loopbacks
+- C. Spanning tree
+- D. The broken VNI's mapping and RT import, so its type 2 and type 3 routes arrive
+
+**5. A multihomed server sees duplicate packets or a flapping MAC. What is the likely cause?**
+
+- A. MTU too small
+- B. Mismatched ESI between the two leaves, or a broken DF election
+- C. Missing type 5 routes
+- D. Wrong UDP port
+
+**6. Inter-subnet traffic fails while same-subnet traffic works. What do you check?**
+
+- A. The L2VNI
+- B. ARP suppression
+- C. The physical cabling
+- D. The L3VNI, the VRF and the type 5 routes
+
+**7. What does a MAC flap usually indicate?**
+
+- A. A loop, a duplicate address or a misbehaving dual-homed server
+- B. Normal VM migration
+- C. Too many spines
+- D. ARP suppression working
+
+**8. Why is it practical to test fabric changes in a lab first?**
+
+- A. Production switches cannot be changed
+- B. Labs run faster than production
+- C. The stack is standard BGP and Linux networking, so the same topology can be built in ContainerLab with FRR or SONiC
+- D. EVPN only works in labs

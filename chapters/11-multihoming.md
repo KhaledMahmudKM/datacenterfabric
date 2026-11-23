@@ -198,3 +198,63 @@ Now all five route types have a job, and it is worth seeing them in one summary 
 ## A note on complexity
 
 Multihoming is the most complex corner of EVPN, and in practice many fabrics keep it simple. Some use EVPN multihoming as described here. Others dual-home servers using a vendor's MLAG feature and run EVPN only between the resulting logical switches. And a great many servers are simply single-homed, relying on the application layer for redundancy instead. The right amount of multihoming is a design decision, which is exactly the kind of decision the next chapter is about.
+
+## Check your understanding
+
+Choose the best answer for each question, then check your answers in [Answers to Chapter Questions](answers.md#chapter-11-multihoming-and-redundancy).
+
+**1. What is an Ethernet Segment in EVPN multihoming?**
+
+- A. The set of leaf links that attach to the same multihomed server, identified by an ESI
+- B. A VXLAN segment identified by a VNI
+- C. A link between two spines
+- D. A VLAN on one leaf
+
+**2. How does EVPN multihoming differ from classic MLAG?**
+
+- A. It needs a dedicated peer link between the two leaves
+- B. It only works with three leaves
+- C. The two leaves coordinate through BGP EVPN routes, with no special peer link
+- D. It does not support link aggregation
+
+**3. What is the Designated Forwarder (DF)?**
+
+- A. The leaf that forwards all unicast traffic
+- B. The one leaf on a segment that delivers BUM traffic to the server
+- C. The spine acting as route reflector
+- D. The border leaf
+
+**4. Which route type do leaves use to discover segment peers and elect the DF?**
+
+- A. Type 1
+- B. Type 2
+- C. Type 4
+- D. Type 5
+
+**5. What does split-horizon filtering prevent?**
+
+- A. Routing loops in the underlay
+- B. Duplicate type 2 routes
+- C. A server receiving its own flooded frame back through its other leaf
+- D. ARP suppression
+
+**6. What is aliasing, provided by the per-ES type 1 route?**
+
+- A. Letting remote VTEPs load-balance to both leaves even if they learned the MAC from only one
+- B. Giving a host two MAC addresses
+- C. Renaming VNIs
+- D. Electing the DF
+
+**7. Leaf 1 fails. How do remote VTEPs quickly stop sending its servers' traffic there?**
+
+- A. One per-ES type 1 route is withdrawn: mass withdrawal
+- B. Leaf 1 withdraws a type 2 route for every MAC
+- C. The spines detect it by MAC aging
+- D. Leaf 2 sends a type 5 route
+
+**8. Which statement about multihoming in practice is true, according to the chapter?**
+
+- A. Every server must be multihomed
+- B. EVPN multihoming is never used
+- C. Many fabrics keep it simple: MLAG, or single-homed servers with application-level redundancy
+- D. Multihoming needs underlay multicast

@@ -149,3 +149,63 @@ Two details matter for a fabric. The `maximum-paths` setting must be high enough
 It is worth stating plainly what the underlay does not do. It does not know about VLANs, tenants, MAC addresses, or virtual machines. It carries no customer traffic in its own right. It simply provides fast, redundant, loop-free reachability between switch loopbacks.
 
 That narrowness is a feature. The underlay is stable and rarely changes, because adding or moving a server does not touch it. All the churn of a live data center, the virtual machines coming and going and moving between hosts, is pushed up into a separate layer that rides on top of this one. That upper layer is the **overlay**, and building it is where the rest of the book goes. The next chapter explains why we need it at all.
+
+## Check your understanding
+
+Choose the best answer for each question, then check your answers in [Answers to Chapter Questions](answers.md#chapter-3-the-ip-underlay).
+
+**1. Why does making every leaf-spine link a routed Layer 3 link remove the need for spanning tree?**
+
+- A. No Layer 2 domain spans the fabric, so there are no Layer 2 loops to prevent
+- B. Routed links are faster than switched links
+- C. Routing protocols run spanning tree internally
+- D. Routed links carry no broadcast traffic at all
+
+**2. Why are point-to-point fabric links usually given a /31 subnet?**
+
+- A. It holds exactly two usable addresses, one per end, and wastes nothing
+- B. It is required by BGP
+- C. It allows multicast on the link
+- D. It makes the link a loopback
+
+**3. Why is a switch's /32 loopback the address used to reach it?**
+
+- A. It is the only address BGP can advertise
+- B. It stays up as long as the switch is alive and is reachable over every uplink
+- C. It is shared by all switches in the fabric
+- D. It avoids the need for ECMP
+
+**4. Which document describes using BGP for routing in large data centers?**
+
+- A. RFC 7348
+- B. RFC 7432
+- C. RFC 7938
+- D. RFC 8365
+
+**5. Which of these is a reason the chapter gives for choosing eBGP for the underlay?**
+
+- A. It is the only protocol that supports ECMP
+- B. It needs no IP addresses
+- C. The same BGP sessions can later carry the EVPN overlay too
+- D. It replaces VXLAN
+
+**6. How does the AS-numbering scheme keep the fabric loop-free?**
+
+- A. BGP rejects a route whose AS path already contains its own ASN
+- B. Spines drop all routes from leaves
+- C. Each leaf runs spanning tree on its uplinks
+- D. Routes expire after one hop
+
+**7. What does maximum-paths 64 do in the leaf's BGP configuration?**
+
+- A. Installs up to 64 equal-cost paths so ECMP uses every spine
+- B. Limits the number of BGP neighbors to 64
+- C. Sets the maximum number of servers per leaf
+- D. Limits each route to 64 hops
+
+**8. What does BGP unnumbered remove from the underlay design?**
+
+- A. The need for loopback addresses
+- B. The need for AS numbers
+- C. Hand-assigned point-to-point /31 addresses, by peering over IPv6 link-local addresses
+- D. The need for ECMP

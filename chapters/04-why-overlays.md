@@ -127,3 +127,63 @@ Several encapsulation formats exist. NVGRE and STT were early contenders. Geneve
 VXLAN won for concrete reasons. It carries a full Ethernet frame, so it delivers true Layer 2 adjacency. It uses UDP as its outer transport, which lets the fabric's ECMP hashing spread tunneled flows across all the spines. And it provides a 24-bit segment identifier, which shatters the old 4094-VLAN ceiling and allows about 16 million isolated segments, enough for the largest multi-tenant clouds.
 
 The next chapter opens up the VXLAN packet byte by byte and walks a frame all the way across the fabric.
+
+## Check your understanding
+
+Choose the best answer for each question, then check your answers in [Answers to Chapter Questions](answers.md#chapter-4-why-overlays).
+
+**1. What does Layer 2 adjacency mean for two servers?**
+
+- A. They are in the same rack
+- B. They behave as if on the same Ethernet segment, same subnet, able to broadcast to each other
+- C. They share a power supply
+- D. They connect to the same spine
+
+**2. Why does VM mobility need Layer 2 adjacency?**
+
+- A. A moved VM must get a new IP address
+- B. VMs can only move within one leaf
+- C. A moved VM expects to keep its IP address and default gateway
+- D. Spanning tree requires it
+
+**3. Why not simply stretch VLANs across the whole fabric at Layer 2?**
+
+- A. It brings back spanning tree, broadcast storms and the 4094-VLAN ceiling
+- B. VLANs cannot carry IP traffic
+- C. Leaves do not support VLANs
+- D. It would need more spines
+
+**4. In overlay networking, what is the underlay?**
+
+- A. The tenant's virtual network
+- B. The physical routed fabric that carries the tunnels
+- C. The VXLAN header
+- D. The hypervisor's virtual switch
+
+**5. What does a tunnel endpoint do with a tenant's Ethernet frame?**
+
+- A. Drops it if it is a broadcast
+- B. Converts it to a routed packet with a new IP header and discards the MACs
+- C. Wraps the whole frame inside an IP packet addressed to the far tunnel endpoint
+- D. Forwards it unchanged across the spines
+
+**6. Why does the overlay/underlay split keep the underlay stable?**
+
+- A. The underlay is configured once and never powered off
+- B. The underlay deals only with outer IP headers between switches; tenant changes stay in the overlay
+- C. Tenants cannot send traffic through the underlay
+- D. The underlay runs no routing protocol
+
+**7. Which encapsulation became the industry default for hardware data center fabrics?**
+
+- A. NVGRE
+- B. STT
+- C. Geneve
+- D. VXLAN
+
+**8. Why does VXLAN use UDP as its outer transport?**
+
+- A. UDP is encrypted
+- B. UDP ports let the fabric's ECMP hashing spread tunneled flows across spines
+- C. UDP guarantees delivery
+- D. Spines can only forward UDP

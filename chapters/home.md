@@ -18,7 +18,7 @@ It is written for fourth-year network engineering students who already know IP r
 
 **Part IV, Design and Operations.** Turning the concepts into a buildable design, then the commands and habits you use to operate and troubleshoot a live fabric.
 
-The **Appendix** collects the reference tables (ports, route types, address formats) in one place, and the **Glossary** defines every acronym.
+Each chapter ends with **Check your understanding**, eight multiple-choice questions. The **Appendix** collects the reference tables (ports, route types, address formats) in one place, the **Glossary** defines every acronym, and **Answers to Chapter Questions** gives the answer to every question with a short explanation.
 
 ---
 

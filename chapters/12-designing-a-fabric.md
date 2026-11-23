@@ -168,3 +168,63 @@ A fabric of dozens of identical switches should never be configured one device a
 </figure>
 
 With a design in hand and built, the job shifts to keeping it healthy. The final chapter covers how to operate and troubleshoot a live fabric.
+
+## Check your understanding
+
+Choose the best answer for each question, then check your answers in [Answers to Chapter Questions](answers.md#chapter-12-designing-a-fabric).
+
+**1. What sets the maximum number of spines in a single fabric?**
+
+- A. The number of ports on each spine
+- B. The number of uplink ports on each leaf
+- C. The number of servers
+- D. The number of VNIs
+
+**2. What sets the maximum number of leaves in a single fabric?**
+
+- A. The number of ports on each spine
+- B. The number of uplink ports on each leaf
+- C. The size of the ASN range
+- D. The VNI size
+
+**3. A leaf has 48 x 25 Gbps server ports and 8 x 100 Gbps uplinks. What is its oversubscription?**
+
+- A. 1:1
+- B. 1.5:1
+- C. 3:1
+- D. 6:1
+
+**4. With 8 spines of 64 ports and 48 servers per leaf, roughly how many servers fit in one fabric?**
+
+- A. About 384
+- B. About 512
+- C. About 3000
+- D. About 30 000
+
+**5. How does a design grow past one fabric?**
+
+- A. Buy larger spines
+- B. Connect leaves directly to each other
+- C. Build more fabrics as pods and join them with a super-spine stage
+- D. Stretch VLANs between fabrics
+
+**6. Why encode a switch's position into its addresses, such as loopback 10.0.1.7 and ASN 65107 for Leaf 7?**
+
+- A. It is required by BGP
+- B. People and scripts can read a switch's identity from its numbers, which makes the fabric automatable
+- C. It saves IP addresses
+- D. It enables ECMP
+
+**7. What is the role of dedicated border leaves?**
+
+- A. To act as route reflectors
+- B. To connect the fabric to the WAN, internet edge, firewalls and load balancers
+- C. To host all default gateways
+- D. To run spanning tree
+
+**8. What is the payoff of generating configurations from templates and per-switch data?**
+
+- A. Faster switches
+- B. Consistency: every switch of a role follows the same rule, removing a class of human error
+- C. Fewer BGP sessions
+- D. No need for a numbering plan

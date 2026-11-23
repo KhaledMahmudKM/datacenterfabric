@@ -187,3 +187,63 @@ The anycast gateway itself is configured per subnet by giving the subnet's switc
 ## Where we are
 
 The fabric can now bridge within a subnet and route between subnets, all at the edge, with a gateway that follows VMs wherever they go. One assumption has quietly held throughout: each host connects to exactly one leaf. Real deployments dual-home servers to two leaves for redundancy, and that raises genuinely tricky questions about loops and duplicate delivery. Those are the multihoming problems, and the route types 1 and 4 we have set aside, which the next chapter finally takes up.
+
+## Check your understanding
+
+Choose the best answer for each question, then check your answers in [Answers to Chapter Questions](answers.md#chapter-10-routing-in-the-overlay).
+
+**1. What is the problem with a single default gateway for a subnet spread across many leaves?**
+
+- A. Hosts cannot reach it
+- B. It requires spanning tree
+- C. It breaks VXLAN encapsulation
+- D. All inter-subnet traffic funnels to one gateway leaf: a bottleneck and a long path
+
+**2. What is a distributed anycast gateway?**
+
+- A. One gateway leaf per rack
+- B. Every leaf configured with the same gateway IP and MAC for a subnet
+- C. A gateway on the spines
+- D. A gateway chosen by spanning tree
+
+**3. Why does the anycast gateway help VM mobility?**
+
+- A. The VM gets a new gateway after moving
+- B. It disables ARP for moved VMs
+- C. It moves the gateway with the VM
+- D. The gateway IP and MAC are the same on every leaf, so a moved VM finds its gateway unchanged
+
+**4. What is an L3VNI?**
+
+- A. A routing segment, one per tenant VRF, carrying routed traffic between subnets
+- B. A bridging segment, one per subnet
+- C. The VXLAN UDP port
+- D. The underlay's routing table
+
+**5. Why does asymmetric IRB scale poorly?**
+
+- A. It needs underlay multicast
+- B. It cannot route between subnets
+- C. Every leaf must be configured with every subnet's L2VNI, even without local hosts in it
+- D. It uses type 3 routes for routing
+
+**6. In symmetric IRB, how does a routed packet cross the fabric?**
+
+- A. In the destination subnet's L2VNI
+- B. Unencapsulated, in the underlay
+- C. In the source subnet's L2VNI
+- D. In the tenant's shared L3VNI, routed on both ingress and egress leaves
+
+**7. What does a type 5 route carry besides the prefix?**
+
+- A. The host's MAC address
+- B. The tenant VRF's L3VNI and a router MAC extended community
+- C. The ESI
+- D. The spine's ASN
+
+**8. What does a border leaf do with type 5 routes?**
+
+- A. Nothing: border leaves only bridge
+- B. Uses them to elect designated forwarders
+- C. Advertises external destinations into the fabric and fabric subnets outward
+- D. Converts them to type 3 routes

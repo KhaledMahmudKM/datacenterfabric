@@ -178,3 +178,63 @@ Putting it together, here is the life of one frame from VM A under Leaf 1 to VM 
 Step 2 hid something important. Leaf 1 had to **know** that VM B's MAC address lives behind Leaf 40. How does it learn that? And what does a VTEP do with a broadcast frame, which by definition has no single destination VTEP?
 
 The original VXLAN specification answered this with flooding and data-plane learning, a method that works but scales poorly. The next chapter examines that approach and its limits, which sets up the reason EVPN exists.
+
+## Check your understanding
+
+Choose the best answer for each question, then check your answers in [Answers to Chapter Questions](answers.md#chapter-5-the-vxlan-data-plane).
+
+**1. In a spine-leaf fabric, which switches are the VTEPs?**
+
+- A. The leaves
+- B. The spines
+- C. The border routers only
+- D. Every switch equally
+
+**2. What address does a VTEP use as the source of its tunnels?**
+
+- A. Its management IP
+- B. The server's IP
+- C. Its underlay loopback
+- D. The spine's loopback
+
+**3. What is the well-known UDP destination port for VXLAN?**
+
+- A. 179
+- B. 4789
+- C. 8472
+- D. 6081
+
+**4. How many bits is the VXLAN Network Identifier (VNI)?**
+
+- A. 12
+- B. 16
+- C. 24
+- D. 32
+
+**5. Why is the outer UDP source port set to a hash of the inner flow?**
+
+- A. To identify the tenant
+- B. So different inner flows hash onto different spines, using all ECMP paths
+- C. To mark the packet as VXLAN
+- D. To carry the VNI
+
+**6. What do the spines look at when forwarding a VXLAN packet?**
+
+- A. The inner Ethernet frame
+- B. The VNI
+- C. The outer headers only: UDP between two loopbacks
+- D. The tenant's VLAN ID
+
+**7. Two tenants both use VLAN 10 on their servers. How does the fabric keep them apart?**
+
+- A. Each tenant's VLAN 10 is mapped to a different VNI
+- B. It refuses the second tenant
+- C. The spines filter by MAC address
+- D. Each tenant gets its own spine
+
+**8. Which question does the VXLAN data plane, on its own, leave open?**
+
+- A. How the outer IP packet is routed
+- B. Which UDP port to use
+- C. How a VTEP learns which remote VTEP holds a given MAC, and how to handle broadcasts
+- D. How large the VNI is

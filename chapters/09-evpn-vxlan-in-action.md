@@ -177,3 +177,63 @@ The `nolearning` flag is the quiet star of that line. It turns off data-plane MA
 ## Still only bridging
 
 Everything so far keeps traffic inside **one** segment. VM A and VM B were in the same subnet and the same VNI, so the fabric only had to **bridge** between them. Real data centers have many subnets, and traffic constantly needs to move **between** them, which is routing, not bridging. How EVPN-VXLAN routes between subnets, using the L3VNI and type 5 routes hinted at earlier, is the subject of the next chapter.
+
+## Check your understanding
+
+Choose the best answer for each question, then check your answers in [Answers to Chapter Questions](answers.md#chapter-9-evpn-vxlan-in-action).
+
+**1. When VM A comes online under Leaf 1, what does Leaf 1 do first in EVPN terms?**
+
+- A. Builds a type 2 route for VM A and sends it to the spines, which reflect it
+- B. Floods VM A's MAC to all VTEPs
+- C. Sends a type 5 route for VM A's subnet
+- D. Waits for remote VTEPs to discover VM A
+
+**2. VM B under Leaf 3 sends an ARP request for VM A's IP. What happens?**
+
+- A. The ARP is flooded to every VTEP in VNI 10
+- B. Leaf 1 answers it after receiving the flood
+- C. Leaf 3 answers it from its EVPN knowledge; the broadcast never crosses the fabric
+- D. The spines answer it
+
+**3. How does Leaf 3 encapsulate VM B's unicast frame to VM A?**
+
+- A. VNI 10, outer IP from VM B to VM A
+- B. VNI 10, outer IP from Leaf 3's loopback to Leaf 1's loopback
+- C. No encapsulation: it is bridged at Layer 2
+- D. Sent to a multicast group for VNI 10
+
+**4. Compared with flood-and-learn, what did this EVPN exchange avoid?**
+
+- A. Encapsulation
+- B. ECMP
+- C. BGP sessions
+- D. Discovery flooding, ARP flooding and the first-packet penalty
+
+**5. Which BGP address family must be enabled on the leaf for EVPN?**
+
+- A. ipv4 unicast
+- B. l2vpn evpn
+- C. ipv6 unicast
+- D. vpnv4 unicast
+
+**6. In FRR, what does advertise-all-vni do?**
+
+- A. Advertises every IP prefix as type 5
+- B. Enables ECMP for all VNIs
+- C. Turns on flood-and-learn
+- D. Advertises the locally configured VNIs and their hosts into EVPN
+
+**7. Why is the Linux VXLAN device created with nolearning?**
+
+- A. EVPN, not data-plane learning, is now the source of truth for where MACs live
+- B. To save memory
+- C. Learning is not supported on loopbacks
+- D. To disable ARP
+
+**8. What can the fabric NOT yet do at the end of this chapter?**
+
+- A. Bridge within a VNI
+- B. Suppress ARP
+- C. Route traffic between different subnets
+- D. Use ECMP for tunnels
